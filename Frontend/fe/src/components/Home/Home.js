@@ -8,7 +8,7 @@ import { AiOutlineFileText } from "react-icons/ai";
 
 const photoCards = [
   { title: "Summarizer", description: "Get key points from long texts instantly.", icon: <AiOutlineFileText size={50} color="#fff" /> },
-  { title: "Note Making", description: "Easily create and organize notes.", icon: <FaRegStickyNote size={50} color="#fff" /> },
+  { title: "Note Making", description: "Easily create and organize notes.", icon: <FaRegStickyNote size={50} color="#fff" /> , route:'/note-maker'},
   { title: "Mind-Map", description: "Visualize ideas with interactive mind maps.", icon: <FaBrain size={50} color="#fff" /> },
   { title: "Question Generator from Notes", description: "AI creates questions from your notes.", icon: <FaQuestionCircle size={50} color="#fff" /> },
   { title: "Speech to Text", description: "Convert speech into editable text.", icon: <FaMicrophone size={50} color="#fff"/>, route: "/speech-to-text"  },
