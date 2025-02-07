@@ -15,9 +15,9 @@ function Create() {
         e.preventDefault();
         try {
             const response = await axios.post('http://127.0.0.1:5000/register', formData);
-            setMessage(response.data.message);
+            alert(response.data.message);
         } catch (error) {
-            setMessage(error.response?.data?.error || 'Error creating account');
+            alert(error.response?.data?.error || 'Error creating account');
         }
     };
 

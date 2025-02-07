@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, decode_token
 import datetime
 from utils.notes import summarize_text  # Importing the function
 from utils.summarizer import classify_subject,simplify_text
@@ -138,12 +138,25 @@ def login():
     else:
         return jsonify({"error": "Invalid email or password"}), 401
 
-# Protected route (Example)
-@app.route('/protected', methods=['GET'])
-@jwt_required()
-def protected():
-    current_user = get_jwt_identity()
-    return jsonify({"message": f"Hello {current_user}, you are authorized!"})
+# Logout route
+@app.route('/logout', methods=['POST'])
+def logout():
+    response = jsonify({"message": "Logout successful!"})
+    response.set_cookie("token", "", expires=0, httponly=True, samesite="None", secure=True)  # Expire the token
+    return response, 200
+
+@app.route('/auth-check', methods=['GET'])
+def auth_check():
+    token = request.cookies.get("token")
+    if not token:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    try:
+        decoded_token = decode_token(token)
+        return jsonify({"user": decoded_token["sub"]}), 200
+    except Exception as e:
+        return jsonify({"error": "Invalid token"}), 401
+
 
 if __name__ == "__main__":
     app.run(debug=True)
