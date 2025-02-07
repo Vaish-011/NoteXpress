@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import axios from "axios";
 import "./login.css"; 
 
@@ -34,6 +34,9 @@ function Login() {
           </div>
           <button type="submit" className="login-btn">Login</button>
         </form>
+        <div className="signup-link">
+          <p>New to Learn Buddy? <Link to="/create-account">Create Account</Link></p>
+        </div>
       </div>
     </div>
   );
