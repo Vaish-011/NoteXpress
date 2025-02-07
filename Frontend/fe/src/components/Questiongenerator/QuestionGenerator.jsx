@@ -1,21 +1,21 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./QuestionGenerator.css";
 
 const QuestionGenerator = () => {
   const [textInput, setTextInput] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate(); // Replace useHistory with useNavigate
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // On button click, redirect to the next page (second page)
-    history.push("/questions");
+    navigate("/questions"); // Replace history.push with navigate
   };
 
   return (
     <div className="question-container">
       <div className="card">
-        <h2 className="card-title">Text-to-Question Generator</h2>
+        <h2 className="card-title">Question Generator</h2>
         <textarea
           className="text-input"
           placeholder="Enter your text or paragraph..."
