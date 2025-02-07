@@ -41,7 +41,4 @@ questions = generate_questions(paragraph, num_questions=3)
 # Generate Answers for each question
 answers = generate_answers(paragraph, questions)
 
-# Print Output
-for i, (q, a) in enumerate(zip(questions, answers)):
-    print(f"Q{i+1}: {q}")
-    print(f"A{i+1}: {a}\n")
+
