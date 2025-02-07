@@ -1,66 +1,128 @@
+body {
+    background: #0d0d0d;
+    color: #3c3cc5;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
 .container {
     max-width: 600px;
-    margin: 40px auto;
+    padding: 25px;
+    background: rgba(31, 26, 44, 0.8) !important; /* Force red background */
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(192, 20, 20, 0.5);
     text-align: center;
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
+}
+
+
+
   
-  h1 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #333;
-  }
-  
-  .upload-section {
-    margin-bottom: 15px;
-  }
-  
-  input[type="file"] {
+h1 {
+    font-family: 'Playfair Display', serif; /* Classic serif font */
+    font-size: 38px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.3);
+}
+
+    
+    
+    
+
+
+.upload-section input[type="file"] {
+    padding: 12px;
+    border: 2px solid #0d4a87;
+    border-radius: 8px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #001f3f, #0a4e91); /* Blackish-Blue gradient */
+    color: white;
+    font-size: 16px;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(30, 144, 255, 0.5);
+}
+
+.upload-section input[type="file"]::-webkit-file-upload-button {
+    background: linear-gradient(135deg, #001f3f, #031a31); /* Darker Blue Gradient */
+    color: white;
+    border: none;
     padding: 10px;
-    border: 1px solid #ccc;
+    font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .textarea textarea {
+    transition: all 0.3s ease-in-out;
+}
+
+.upload-section input[type="file"]::-webkit-file-upload-button:hover {
+    background: linear-gradient(135deg, #052647, #1e90ff);
+    box-shadow: 0 0 10px rgba(30, 144, 255, 0.8);
+}
+
+
+.textarea textarea {
     width: 100%;
     height: 150px;
     font-size: 16px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #1e90ff;
+    background: rgba(30, 144, 255, 0.1);
+    color: #fff;
     resize: none;
-    background: #fff;
-  }
-  
-  .buttons {
-    margin-top: 15px;
-  }
-  
-  button {
+    transition: 0.3s;
+}
+
+.textarea textarea:focus {
+    border-color: #00bfff;
+    box-shadow: 0 0 10px #00bfff;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+button {
     display: flex;
     align-items: center;
-    gap: 5px;
+    justify-content: center;
+    gap: 8px;
     font-size: 16px;
-    padding: 10px 15px;
+    padding: 12px 18px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
     font-weight: bold;
-    transition: 0.3s;
-    background: #007bff;
+    background: linear-gradient(135deg, #1e90ff, #007bff);
     color: white;
-  }
-  
-  button:disabled {
-    background: #ccc;
+    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.5);
+    transition: all 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(30, 144, 255, 0.7);
+}
+
+button:disabled {
+    background: #555;
+    box-shadow: none;
     cursor: not-allowed;
-  }
-  
-  button:hover:not(:disabled) {
-    opacity: 0.8;
-  }
-  
+}
+button.copy {
+    background: linear-gradient(135deg, #09213a, #051424); /* Blue gradient */
+    color: white;
+    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.5);
+    transition: all 0.3s;
+}
+
+button.copy:hover {
+    background: linear-gradient(135deg, #1e90ff, #003366);
+    box-shadow: 0 6px 20px rgba(30, 144, 255, 0.7);
+}

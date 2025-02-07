@@ -1,91 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
 .ocr-container {
-    max-width: 500px;
-    margin: auto;
+    max-width: 600px;
+    margin: 50px auto;
     text-align: center;
     background: #ffffff;
-    padding: 20px;
+    padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    font-family: "Arial", sans-serif;
-  }
-  
-  h2 {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
     color: #2c3e50;
-  }
-  
-  .upload-box {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.upload-box {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     border: 2px dashed #007bff;
-    padding: 20px;
-    border-radius: 8px;
-    cursor: pointer;
+    padding: 30px;
+    border-radius: 12px;
+    background-color: #f9f9f9;
     transition: 0.3s;
-  }
-  
-  .upload-box:hover {
+    cursor: pointer;
+}
+
+.upload-box:hover {
     background-color: #f0f8ff;
-  }
-  
-  .upload-icon {
-    font-size: 32px;
+    border-color: #0056b3;
+}
+
+.upload-icon {
+    font-size: 36px;
     color: #007bff;
-  }
-  
-  .image-preview img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 10px;
-    border-radius: 8px;
-  }
-  
-  .extract-btn {
+    margin-bottom: 10px;
+}
+
+.upload-text {
+    font-size: 16px;
+    color: #555;
+}
+
+.choose-file-btn {
     background: #007bff;
-    color: white;
+    color: #ffffff;
     border: none;
-    padding: 12px 18px;
+    padding: 12px 20px;
     border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 15px;
+    margin-top: 20px;
     transition: 0.3s;
-  }
-  
-  .extract-btn:hover {
+}
+
+.choose-file-btn:hover {
     background: #0056b3;
-  }
-  
-  .extract-btn:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-  }
-  
-  .loading-spinner {
-    margin: 10px auto;
-    width: 25px;
-    height: 25px;
-    border: 3px solid #007bff;
-    border-top: 3px solid transparent;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  .extracted-text {
+}
+
+.url-link {
     margin-top: 15px;
-    padding: 10px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-  }
-  
-  .extracted-text h3 {
-    color: #333;
-  }
-  
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.url-link:hover {
+    text-decoration: underline;
+}
