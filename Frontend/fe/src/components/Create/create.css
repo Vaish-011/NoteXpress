@@ -1,0 +1,75 @@
+/* Create Account Page Container */
+.create-account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f0f0f0;
+  }
+  
+  /* Create Account Box */
+  .create-account-box {
+    width: 350px;
+    padding: 40px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  /* Title */
+  .create-account-box h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Input Box Styling */
+  .input-box {
+    position: relative;
+    margin-bottom: 30px;
+  }
+  
+  .input-box input {
+    width: 100%;
+    padding: 10px;
+    padding-left: 20px;
+    background: #f4f4f4;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .input-box input:focus {
+    background: #e6e6e6;
+  }
+  
+  .input-box label {
+    position: absolute;
+    top: -18px;
+    left: 20px;
+    font-size: 14px;
+    color: #666;
+    font-weight: bold;
+  }
+  
+  /* Button */
+  .create-account-btn {
+    padding: 12px 20px;
+    width: 100%;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s ease;
+  }
+  
+  .create-account-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .create-account-btn:active {
+    transform: scale(0.98);
+  }
