@@ -1,0 +1,151 @@
+/* Apply to entire page */
+body {
+    background: #0a0f1f;  /* Deep dark blue background */
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease-in-out;
+    overflow: scroll;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background: rgba(10, 15, 31, 0.9); /* Semi-transparent deep blue */
+    box-shadow: 0px 4px 10px rgba(0, 140, 255, 0.3);
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    background: rgba(15, 20, 40, 0.95);
+    border-right: 2px solid rgba(0, 140, 255, 0.5);
+      z-index: 1;
+  }
+  
+  /* Sidebar Links */
+  .sidebar li {
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .sidebar li:hover {
+    background: rgba(0, 140, 255, 0.3);
+  }
+  
+  /* Main Content */
+  .main-content {
+    background: transparent;
+  }
+  
+  
+  
+  
+  /* Navbar */
+  .navbar {
+      @apply flex justify-between items-center bg-gray-900 text-white p-4 fixed w-full top-0 shadow-md;
+      height: 4rem;
+      z-index: 50;
+      
+  }
+    
+    .logo {
+      @apply text-2xl font-bold ml-4;
+    }
+    
+    .hamburger {
+      @apply text-2xl cursor-pointer absolute right-4 top-4;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+      @apply fixed top-0 left-0 h-full w-64 bg-gray-800 text-white p-5 transform -translate-x-full transition-transform duration-300 ease-in-out;
+    }
+    
+    .sidebar.open {
+      @apply translate-x-0;
+    }
+    
+    .sidebar ul {
+      @apply space-y-4 mt-20;
+    }
+    
+    .sidebar li {
+      @apply cursor-pointer hover:text-gray-300;
+    }
+    
+    /* Main Content */
+    .main-content {
+      @apply flex flex-col pt-24;
+    }
+    
+    /* Cards Grid */
+    .cards-grid {
+      @apply flex flex-wrap justify-center gap-8 p-10 w-full md:w-4/5;
+      margin-top: 10rem;
+      margin-left: 15rem;
+  }
+    
+    /* Photo Card */
+    .icon-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+    
+     .photo-card {
+      width: 250px;  /* Set a fixed width */
+      height: 300px; /* Set a fixed height */
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border 0.2s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+  }
+  /* Hover effect - blue glow */
+  .photo-card:hover {
+    transform: translateY(-5px); /* Slight lift effect */
+    box-shadow: 0 4px 20px rgba(0, 140, 255, 0.6); /* Blue glowing shadow */
+    border: 2px solid rgba(0, 140, 255, 0.8);
+  }
+  
+  /* Click effect - stronger glow */
+  .photo-card:active {
+    box-shadow: 0 0 30px rgba(0, 140, 255, 1); /* Intense glow */
+    transform: scale(0.98); /* Slight press-in effect */
+  }
+  
+  /* Ensure all icons inside the photo cards are centered and properly sized */
+  .icon-container {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 10px;
+  }
+  
+  /* Adjust text size for better visibility */
+  .card-title {
+      font-size: 1.5rem; /* Larger font size */
+      font-weight: bold;
+      color: #00aaff; ;
+  }
+  
+  .card-description {
+      font-size: 1rem;
+      color: #d1d1d1; 
+      margin-top: 10px;
+  }
