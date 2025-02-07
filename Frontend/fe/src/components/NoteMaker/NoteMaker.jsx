@@ -13,7 +13,7 @@ const NoteMaker = () => {
   return (
     <div className="note-maker-container">
       <div className="note-card">
-        <h2 className="note-title">my notes</h2>
+        <h2 className="note-title">My Notes</h2>
         <textarea
           className="note-input"
           placeholder="Type your text here..."
