@@ -1,14 +1,24 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from flask_bcrypt import Bcrypt
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+import datetime
 from utils.notes import summarize_text  # Importing the function
 from utils.summarizer import classify_subject,simplify_text
 from utils.speechtotext import convert_audio_to_wav,transcribe_google
 import os
 from utils.questiongenerate import generate_answers,generate_questions
+from database.connection import user_collection
 
 # Initialize Flask app
 app = Flask(__name__)
-CORS(app)
+CORS(app, supports_credentials=True)
+bcrypt = Bcrypt(app)
+
+app.config["JWT_SECRET_KEY"] = "f1458f1d583c8831aa510b9b98c1423a57708a9efe6df70b781c3a69ec5052e1"  # Change this to a secure key
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = datetime.timedelta(days=1)
+
+jwt = JWTManager(app)
 
 # Route for summarizing text
 @app.route('/notes', methods=['POST'])
@@ -91,6 +101,49 @@ def question():
     qa_pairs = [{"question": q, "answer": a} for q, a in zip(questions, answers)]
 
     return jsonify({"summary": qa_pairs})
+
+# Register route
+@app.route('/register', methods=['POST'])
+def register():
+    data = request.json
+    if not all(key in data for key in ["username", "email", "password"]):
+        return jsonify({"error": "Missing fields"}), 400
+
+    # Check if user already exists
+    if user_collection.find_one({"email": data["email"]}):
+        return jsonify({"error": "Email already registered"}), 409
+
+    # Hash the password before storing
+    hashed_password = bcrypt.generate_password_hash(data["password"]).decode('utf-8')
+
+    user_collection.insert_one({
+        "username": data["username"],
+        "email": data["email"],
+        "password": hashed_password
+    })
+    return jsonify({"message": "Account created successfully!"}), 201
+
+# Login route
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.json
+    user = user_collection.find_one({"email": data["email"]})
+
+    if user and bcrypt.check_password_hash(user["password"], data["password"]):
+        access_token = create_access_token(identity=user["email"])
+
+        response = jsonify({"message": "Login successful!"})
+        response.set_cookie("token", access_token, httponly=True, samesite="None",secure=True)  # Set JWT in cookie
+        return response, 200
+    else:
+        return jsonify({"error": "Invalid email or password"}), 401
+
+# Protected route (Example)
+@app.route('/protected', methods=['GET'])
+@jwt_required()
+def protected():
+    current_user = get_jwt_identity()
+    return jsonify({"message": f"Hello {current_user}, you are authorized!"})
 
 if __name__ == "__main__":
     app.run(debug=True)

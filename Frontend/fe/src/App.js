@@ -4,16 +4,28 @@ import Login from './components/Login/login';
 import Create from './components/CreateAccount/create'; 
 import Home from './components/Home/Home';
 import Feedback from './components/Feedback/Feedback';
+import QuestionGenerator from './components/Questiongenerator/QuestionGenerator';
+import QuestionsPage from './components/Questiongenerator/QuestionPage';
+import SpeechToText from './components/SpeechToText/SpeechToText';
+import Summarizer from './components/Summarizer/Summarizer';
+import OCR from './components/ocr/HandWritingOCR';
+import NoteMaker from './components/NoteMaker/NoteMaker';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home />} /> 
+          <Route path="/home" element={<Home />} /> 
           <Route path="/create-account" element={<Create />} />
-          <Route path="/Login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/feedback" element={<Feedback />} />
+          <Route path="/question" element={<QuestionGenerator/>} />
+          <Route path="/questionPage" element={<QuestionsPage/>} />
+          <Route path='/summarizer' element={<Summarizer/>}></Route>
+          <Route path='/note-maker' element={<NoteMaker/>}></Route>
+          <Route path='/speech-to-text' element={<SpeechToText/>}></Route>
+          <Route path='/ocr' element={<OCR/>}></Route>
         </Routes>
       </div>
     </Router>
