@@ -1,5 +1,11 @@
-/* Background styling */
-body {
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
     margin: 0;
     padding: 0;
     display: flex;
@@ -8,9 +14,11 @@ body {
     height: 100vh;
     background: #121212;
     font-family: "Poppins", sans-serif;
+    color: #fff;
+    overflow: hidden;
   }
   
-  /* Login container */
+  
   .login-container {
     display: flex;
     justify-content: center;
@@ -19,76 +27,127 @@ body {
     height: 100vh;
   }
   
-  /* Login box */
   .login-box {
     background: #1e1e1e;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
     text-align: center;
-    width: 350px;
+    width: 380px;
+    transform: perspective(1200px) rotateY(10deg);
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
   }
   
+  .login-box:hover {
+    transform: perspective(1200px) rotateY(0deg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+  }
+  
+ 
   .login-box h2 {
     color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 600;
   }
   
-  /* Input field */
+ 
   .input-box {
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 35px; 
   }
   
   .input-box input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background: transparent;
     border: none;
     border-bottom: 2px solid #555;
     color: #fff;
     font-size: 16px;
     outline: none;
-    transition: 0.3s;
+    transition: 0.3s ease;
   }
   
   .input-box label {
     position: absolute;
     left: 0;
-    top: 10px;
+    top: 18px; 
     color: #888;
     font-size: 14px;
     pointer-events: none;
     transition: 0.3s;
   }
   
-  /* Floating label effect */
+  
   .input-box input:focus ~ label,
   .input-box input:valid ~ label {
     top: -12px;
     font-size: 12px;
     color: #00bcd4;
   }
-  
-  /* Input focus effect */
+
   .input-box input:focus {
     border-bottom: 2px solid #00bcd4;
   }
   
-  /* Login button */
+ 
   .login-btn {
     width: 100%;
     padding: 12px;
-    background: #00bcd4;
+    background: linear-gradient(45deg, #00bcd4, #0097a7);
     border: none;
     color: white;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3);
+  }
+  
+ 
+  .login-btn:hover {
+    background: linear-gradient(45deg, #0097a7, #00bcd4);
+    box-shadow: 0 6px 20px rgba(0, 188, 212, 0.5);
+  }
+  
+  .signup-link {
+    margin-top: 20px;
+    color: #888;
+  }
+  
+  .signup-link p {
+    font-size: 14px;
+  }
+  
+  .signup-link a {
+    color: #00bcd4;
+    text-decoration: none;
     transition: 0.3s;
   }
   
-  .login-btn:hover {
-    background: #0097a7;
-    box-shadow: 0 0 10px #00bcd4;
+ 
+  .signup-link a:hover {
+    text-decoration: underline;
   }
+  
+
+  @media screen and (max-width: 600px) {
+    .login-box {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    .login-box h2 {
+      font-size: 24px;
+    }
+  
+    .input-box input {
+      font-size: 14px;
+    }
+  
+    .login-btn {
+      font-size: 14px;
+    }
+  }
+  
