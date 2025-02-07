@@ -8,7 +8,7 @@ import QuestionGenerator from './components/Questiongenerator/QuestionGenerator'
 import QuestionsPage from './components/Questiongenerator/QuestionPage';
 import SpeechToText from './components/SpeechToText/SpeechToText';
 import Summarizer from './components/Summarizer/Summarizer';
-import OCR from './components/ocr/HandWritingOCR';
+import OCR from './components/ocr/HandwritingOCR';
 import NoteMaker from './components/NoteMaker/NoteMaker';
 
 function App() {
