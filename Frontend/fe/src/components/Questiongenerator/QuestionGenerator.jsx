@@ -4,7 +4,7 @@ import "./QuestionGenerator.css";
 
 const QuestionGenerator = () => {
   const [textInput, setTextInput] = useState("");
-  const navigate = useNavigate(); // Replace useHistory with useNavigate
+  const navigate = useNavigate(); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
