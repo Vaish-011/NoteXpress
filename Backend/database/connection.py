@@ -1,6 +1,10 @@
 from pymongo import MongoClient
+from dotenv import load_dotenv
+import os
 
-MONGO_URI = "mongodb+srv://muskantomar43:zxDvnHtshU8fYGAY@cluster0.cj8jl.mongodb.net/%3Cdbname%3E?retryWrites=true&w=majority"
+load_dotenv()
+
+MONGO_URI = os.getenv("MONGO_URI")
 client = MongoClient(MONGO_URI)
 
 db = client["LEARNBUDDY"]
