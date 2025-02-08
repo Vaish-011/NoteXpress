@@ -10,6 +10,8 @@ import SpeechToText from './components/SpeechToText/SpeechToText';
 import Summarizer from './components/Summarizer/Summarizer';
 import OCR from './components/ocr/HandwritingOCR';
 import NoteMaker from './components/NoteMaker/NoteMaker';
+import AudioRecorder from './components/AudioNotes/AudioRecorder';
+import Note from './components/Note/Note';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path='/note-maker' element={<NoteMaker/>}></Route>
           <Route path='/speech-to-text' element={<SpeechToText/>}></Route>
           <Route path='/ocr' element={<OCR/>}></Route>
+          <Route path="/audio-notes" element={<AudioRecorder />} />
+          <Route path='/note'element={<Note/>}></Route>
         </Routes>
       </div>
     </Router>

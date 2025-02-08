@@ -1,44 +1,56 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./QuestionGenerator.css";
+import './QuestionGenerator.css'
 
-function QuestionGenerator() {
+const GenerateQuestionPage = () => {
   const [inputText, setInputText] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleGenerateQuestion = () => {
-    if (inputText.trim() === "") {
-      alert("Please enter text to generate questions!");
+  const handleGenerateQuestions = async () => {
+    if (!inputText.trim()) {
+      alert("Please enter some text to generate questions.");
       return;
     }
 
-    // Generate 10 random questions based on input text
-    const questions = Array.from({ length: 10 }, (_, index) => `${inputText} Question ${index + 1}?`);
+    setLoading(true);
     
-    // Navigate to the Question Page with generated questions
-    navigate("/questions", { state: { questions } });
+    try {
+      const response = await fetch("http://127.0.0.1:5000/question", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: inputText }),
+      });
+
+      const data = await response.json();
+      setLoading(false);
+
+      if (data.qa_pairs) {
+        navigate("/questionPage", { state: { qa_pairs: data.qa_pairs } });
+      } else {
+        alert("Failed to generate questions.");
+      }
+    } catch (error) {
+      console.error("Error generating questions:", error);
+      setLoading(false);
+      alert("Error connecting to the server.");
+    }
   };
 
   return (
-    <div className="question-container">
-      <h2 className="question-heading">Question Generator</h2>
-      <form onSubmit={(e) => e.preventDefault()} className="question-form">
-        <label className="question-label">Enter text to generate a question ✨</label>
-        <textarea
-          className="question-input"
-          placeholder="Enter text..."
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-        />
-
-        <div className="question-action">
-          <button type="button" className="question-button" onClick={handleGenerateQuestion}>
-            Generate Questions
-          </button>
-        </div>
-      </form>
+    <div className="container">
+      <h2>Enter Text to Generate Questions</h2>
+      <textarea
+        value={inputText}
+        onChange={(e) => setInputText(e.target.value)}
+        placeholder="Type or paste text here..."
+        className="text-area"
+      />
+      <button onClick={handleGenerateQuestions} className="generate-button" disabled={loading}>
+        {loading ? "Generating..." : "Generate Questions"}
+      </button>
     </div>
   );
-}
+};
 
-export default QuestionGenerator;
+export default GenerateQuestionPage;

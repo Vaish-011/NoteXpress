@@ -9,6 +9,8 @@ from utils.speechtotext import convert_audio_to_wav,transcribe_google
 import os
 from utils.questiongenerate import generate_answers,generate_questions
 from database.connection import user_collection
+from uuid import uuid4
+from database.connection import feedback
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -86,21 +88,27 @@ def upload_audio():
 # Route for summarizing text
 @app.route('/question', methods=['POST'])
 def question():
+    """API route to generate questions and answers from input text."""
     data = request.json
-    text = data.get("text", "")
+    text = data.get("text", "").strip()
 
     if not text:
         return jsonify({"error": "No text provided"}), 400
 
-    questions = generate_questions(text,num_questions=3)
-    answers = generate_answers(text,questions)
-    if len(questions) != len(answers):
-        return jsonify({"error": "Mismatch between questions and answers"}), 500
+    try:
+        questions = generate_questions(text, num_questions=10)
+        answers = generate_answers(text, questions)
 
-    # Combining questions and answers into a structured JSON format
-    qa_pairs = [{"question": q, "answer": a} for q, a in zip(questions, answers)]
+        # Ensure both lists have the same length
+        if len(questions) != len(answers):
+            return jsonify({"error": "Mismatch between questions and answers"}), 500
 
-    return jsonify({"summary": qa_pairs})
+        qa_pairs = [{"question": q, "answer": a} for q, a in zip(questions, answers)]
+
+        return jsonify({"qa_pairs": qa_pairs})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 # Register route
 @app.route('/register', methods=['POST'])
@@ -156,6 +164,42 @@ def auth_check():
         return jsonify({"user": decoded_token["sub"]}), 200
     except Exception as e:
         return jsonify({"error": "Invalid token"}), 401
+    
+
+# New route for submitting feedback
+@app.route('/feedback', methods=['POST'])
+def submit_feedback():
+    data = request.json
+    user_id = data.get("user_id")
+    feedback_text = data.get("feedback")
+    stars = data.get("stars")
+    # Optionally use a provided feedback_id, or generate a new one if not provided
+    feedback_id = data.get("feedback_id", str(uuid4()))
+
+    if not user_id or not feedback_text or stars is None:
+        return jsonify({"error": "Missing required fields: user_id, feedback, and stars"}), 400
+
+    try:
+        stars = int(stars)
+        if stars < 1 or stars > 5:
+            return jsonify({"error": "Stars must be between 1 and 5"}), 400
+    except ValueError:
+        return jsonify({"error": "Stars must be an integer"}), 400
+
+    feedback_data = {
+        "user_id": user_id,
+        "feedback_id": feedback_id,
+        "feedback": feedback_text,
+        "stars": stars,
+        "timestamp": datetime.datetime.utcnow()
+    }
+
+    result = feedback.insert_one(feedback_data)
+
+    if result.inserted_id:
+        return jsonify({"message": "Feedback submitted successfully", "feedback_id": feedback_id}), 201
+    else:
+        return jsonify({"error": "An error occurred while submitting feedback"}), 500
 
 
 if __name__ == "__main__":
