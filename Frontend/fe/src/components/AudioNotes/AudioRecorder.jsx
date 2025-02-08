@@ -64,7 +64,8 @@ const AudioRecorder = () => {
               Your browser does not support the audio element.
             </audio>
             <button className="delete-btn" onClick={() => deleteRecording(index)}>🗑️</button>
-          </div>
+    <a href={audioUrl} download={`recording_${index + 1}.wav`} className="download-btn">⬇️</a>
+  </div>
         ))}
       </div>
     </div>

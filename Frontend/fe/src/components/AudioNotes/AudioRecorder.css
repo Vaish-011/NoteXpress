@@ -89,6 +89,28 @@
     border-radius: 5px;
     outline: none;
   }
+
+  /* Download Button */
+.download-btn {
+  background: rgba(0, 200, 0, 0.8);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.download-btn:hover {
+  background: rgba(0, 200, 0, 1);
+  transform: scale(1.1);
+}
+
   
   /* Delete Button */
   .delete-btn {
