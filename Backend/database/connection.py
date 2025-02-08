@@ -6,3 +6,4 @@ client = MongoClient(MONGO_URI)
 db = client["LEARNBUDDY"]
 user_collection = db["User"]
 feedback = db['Feedback']
+notes_collection = db['Notes']

@@ -202,5 +202,16 @@ def submit_feedback():
         return jsonify({"error": "An error occurred while submitting feedback"}), 500
 
 
+@app.route('/feedback', methods=['GET'])
+def get_feedback():
+    # Retrieve all feedback entries from the feedback collection.
+    all_feedback = list(feedback.find({}))
+    # Convert ObjectId and datetime objects to strings for JSON serialization.
+    for fb in all_feedback:
+        fb["_id"] = str(fb["_id"])
+        if "timestamp" in fb and fb["timestamp"]:
+            fb["timestamp"] = fb["timestamp"].isoformat()
+    return jsonify(all_feedback)
+
 if __name__ == "__main__":
     app.run(debug=True)
