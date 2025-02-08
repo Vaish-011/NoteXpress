@@ -12,7 +12,7 @@ const photoCards = [
   { title: "Mind-Map", description: "Visualize ideas with interactive mind maps.", icon: <FaBrain size={50} color="#fff" /> },
   { title: "Question Generator from Notes", description: "AI creates questions from your notes.", icon: <FaQuestionCircle size={50} color="#fff" />,route:'/question' },
   { title: "Speech to Text", description: "Convert speech into editable text.", icon: <FaMicrophone size={50} color="#fff"/>, route: "/speech-to-text"  },
-  { title: "Audio Notes & Voice Command", description: "Record notes and use voice commands.", icon: <FaHeadphones size={50} color="#fff" /> },
+  { title: "Audio Notes & Voice Command", description: "Record notes and use voice commands.", icon: <FaHeadphones size={50} color="#fff" />,route:'/audio-notes' },
   { title: "OCR", description: "Convert handwriting into digital text.", icon: <FaCamera size={50} color="#fff" /> },
 ];
 
