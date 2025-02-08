@@ -38,14 +38,16 @@ const GenerateQuestionPage = () => {
   };
 
   return (
-    <div className="container">
+    <div className="question-container">
       <h2>Enter Text to Generate Questions</h2>
+      <div className="question-input-container">
       <textarea
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
         placeholder="Type or paste text here..."
         className="text-area"
       />
+      </div>
       <button onClick={handleGenerateQuestions} className="generate-button" disabled={loading}>
         {loading ? "Generating..." : "Generate Questions"}
       </button>

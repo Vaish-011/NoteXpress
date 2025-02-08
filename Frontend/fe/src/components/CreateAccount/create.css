@@ -78,7 +78,7 @@
 .create-account-btn {
   width: 100%;
   padding: 12px;
-  background: linear-gradient(45deg, #00bcd4, #0097a7);
+  background: linear-gradient(45deg, #028477, #040e58);
   border: none;
   color: white;
   font-size: 16px;
@@ -90,7 +90,7 @@
 
 
 .create-account-btn:hover {
-  background: linear-gradient(45deg, #0097a7, #00bcd4);
+  background: linear-gradient(45deg, #0e5269, #327f91);
   box-shadow: 0 6px 20px rgba(0, 188, 212, 0.5);
 }
 

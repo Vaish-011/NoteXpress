@@ -1,9 +1,11 @@
 /* 3D Glassmorphic Question Generator Container */
 .question-container {
+  position: relative;
+  top: -30px;
   width: 90vw;
   max-width: 50%;
-  height: auto;
-  margin: 50px auto;
+  height: 350px;
+  margin: 10px auto;
   padding: 30px;
   background: rgba(0, 0, 30, 0.7); /* Dark blue glass effect */
   backdrop-filter: blur(15px);
@@ -35,38 +37,48 @@
   margin-top: 15px;
 }
 
-/* Input Box with Neon Border */
-.question-input {
-  width: 90%;
-  height: 150px; /* Bigger textarea */
+h2 {
+  margin-bottom: 20px; /* Space between heading and textarea */
+}
+
+/* Add space above and below the textarea */
+.text-area {
+  display: block;
+  width: 100%;
+  height: 150px; /* Keep the size */
   padding: 15px;
+  margin-top: 15px; /* Space above */
+  margin-bottom: 20px; /* Space below */
   border-radius: 10px;
   border: 2px solid #00ccff;
   font-size: 16px;
   outline: none;
   resize: vertical;
-  background-color: rgba(0, 0, 50, 0.6); /* Dark blue transparent */
-  color: white; /* White text */
+  background-color: rgba(0, 0, 50, 0.6);
+  color: white;
   box-shadow: inset 0 0 10px rgba(0, 0, 255, 0.4);
   transition: all 0.3s ease-in-out;
+  margin-left:5px;
+  margin-right:5px;
+  
 }
 
-.question-input:focus {
+.text-area:focus {
   border-color: #0088ff;
   box-shadow: 0 0 15px #00ccff;
 }
 
-/* Label */
-.question-label {
+
+h2 {
   font-size: 18px;
   font-weight: bold;
   color: #00ccff;
   text-align: center;
-  text-shadow: 0 0 5px #00ccff;
+  text-shadow: 0 0 5px #145566;
 }
 
 /* Submit Button with 3D Effect */
-.question-button {
+.generate-button {
   width: 100%;
   padding: 12px;
   background: linear-gradient(145deg, #0044ff, #001a66); /* Deep blue gradient */
@@ -81,12 +93,18 @@
   transition: 0.3s ease;
 }
 
-.question-button:hover {
+.generate-button:hover {
   background: linear-gradient(145deg, #001a66, #0044ff);
   box-shadow: 0 0 15px #00ccff;
   transform: scale(1.05);
 }
 
-.question-button:active {
+.generate-button:active {
   transform: scale(0.95);
+}
+
+.generate-button{
+  margin:auto;
+  padding:20px;
+  margin-top:10px;
 }
