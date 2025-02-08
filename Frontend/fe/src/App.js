@@ -29,7 +29,6 @@ function App() {
           <Route path='/summarizer' element={<Summarizer/>}></Route>
           <Route path='/note-maker' element={<NoteMaker/>}></Route>
           <Route path='/speech-to-text' element={<SpeechToText/>}></Route>
-          <Route path='/ocr' element={<OCR/>}></Route>
           <Route path="/audio-notes" element={<AudioRecorder />} />
           <Route path='/note'element={<Note/>}></Route>
           <Route path="/todo" element={<TodoProvider><TodoList /></TodoProvider>} />
