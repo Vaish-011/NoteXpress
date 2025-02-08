@@ -1,7 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Summarizer.css";
 
 const Summarizer = () => {
+  const [generatedText, setGeneratedText] = useState("");
+  const [fileName, setFileName] = useState("No file chosen");
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setFileName(file.name);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setGeneratedText(e.target.result);
+      };
+      reader.readAsText(file);
+    }
+  };
+
+  const handleSummarize = () => {
+    // Placeholder for the summarize logic
+    const summary = "This is a summarized version of the uploaded or pasted content.";
+    setGeneratedText(summary);
+  };
+
   return (
     <div className="container">
       <header>
@@ -28,14 +49,20 @@ const Summarizer = () => {
 
       <div className="upload-section">
         <label htmlFor="file-upload" className="file-upload-label">
-          <input type="file" id="file-upload" hidden />
+          <input type="file" id="file-upload" hidden onChange={handleFileUpload} />
           Choose File
         </label>
-        <span className="file-info">No file chosen</span>
-        <button className="upload-btn">Upload Doc</button>
+        <span className="file-info">{fileName}</span>
       </div>
 
-      <button className="summarize-btn">✨ Summarize</button>
+      <button className="summarize-btn" onClick={handleSummarize}>✨ Summarize</button>
+
+      {generatedText && (
+        <div className="generated-text">
+          <h2>Generated Text:</h2>
+          <textarea readOnly value={generatedText}></textarea>
+        </div>
+      )}
 
       <footer>
         <p>

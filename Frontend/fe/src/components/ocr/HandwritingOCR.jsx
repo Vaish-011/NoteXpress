@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Tesseract from "tesseract.js";
-import { FaUpload, FaFileImage } from "react-icons/fa";
+import { FaUpload } from "react-icons/fa";
 
 const HandwritingOCR = () => {
   const [image, setImage] = useState(null);
@@ -45,18 +45,18 @@ const HandwritingOCR = () => {
         </div>
       )}
 
-      <button onClick={extractText} disabled={!image || loading} className="extract-btn">
-        {loading ? "Extracting..." : "Extract Text"}
-      </button>
+      <div className="centered-btn">
+        <button onClick={extractText} disabled={!image || loading} className="extract-btn">
+          {loading ? "Extracting..." : "Extract Text"}
+        </button>
+      </div>
 
-      {loading && <div className="loading-spinner"></div>}
-
-      {text && (
-        <div className="extracted-text">
-          <h3>Extracted Text:</h3>
-          <p>{text}</p>
+      <div className="extracted-text-container">
+        <h3>Extracted Text:</h3>
+        <div className="text-box">
+          <p>{text || "No text extracted yet."}</p>
         </div>
-      )}
+      </div>
     </div>
   );
 };
