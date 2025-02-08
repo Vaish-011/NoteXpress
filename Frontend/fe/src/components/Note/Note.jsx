@@ -1,75 +1,90 @@
-import React, { useState } from "react";
-import { Trash2 } from "lucide-react"; // Importing the delete icon
+import React, { useState, useEffect } from "react";
+import { Trash2 } from "lucide-react"; 
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Note.css";
 
 const Note = () => {
-  const [notes, setNotes] = useState([]);
-  const [newNote, setNewNote] = useState("");
-  const [showModal, setShowModal] = useState(false);
-  const [selectedNote, setSelectedNote] = useState(null);
+  const [note, setNote] = useState("");
+  const [user, setUser] = useState(null);
+  const [noteList, setNoteList] = useState([]);
+  const navigate = useNavigate();
 
-  // Open modal to add a note
-  const handleAddNote = () => {
-    setShowModal(true);
-  };
+  // Check for user authentication and fetch notes
+  useEffect(() => {
+    const checkAuthAndFetchNotes = async () => {
+      try {
+        // Check user authentication
+        const authResponse = await axios.get("http://localhost:5000/auth-check", { withCredentials: true });
+        setUser(authResponse.data.user);
 
-  // Save note and add it to the top
-  const handleSaveNote = () => {
-    if (newNote.trim() !== "") {
-      setNotes((prevNotes) => [{ text: newNote }, ...prevNotes]); // Add new note at the top
-      setNewNote("");
-      setShowModal(false);
+        // Fetch notes
+        const noteResponse = await axios.get("http://localhost:5000/note");
+        setNoteList(noteResponse.data);
+      } catch (err) {
+        console.error("Error during authentication or fetching notes", err);
+        navigate("/login"); // Redirect to login on error
+      }
+    };
+
+    checkAuthAndFetchNotes();
+  }, [navigate]);
+
+  // Handle submitting a new note
+  const submitNote = async () => {
+    if (!note.trim()) return;
+
+    try {
+      await axios.post("http://localhost:5000/note", { user_id: user, notes: note });
+      setNoteList([...noteList, { user_id: user, notes: note, timestamp: new Date().toISOString() }]);
+      setNote("");
+    } catch (err) {
+      console.error("Error submitting note", err);
     }
   };
-
-  // Delete note
-  const handleDeleteNote = (index) => {
-    setNotes((prevNotes) => prevNotes.filter((_, i) => i !== index));
+  // Handle deleting a note
+  const deleteNote = async (noteId) => {
+    try {
+      await axios.delete(`http://localhost:5000/note/${noteId}`);
+      setNoteList(noteList.filter((note) => note._id !== noteId));
+    } catch (err) {
+      console.error("Error deleting note", err);
+    }
   };
+  
 
   return (
-    <div className="app">
-      <div className="notes-container">
-        {notes.map((note, index) => (
-          <div key={index} className="note-box">
-            <p
-              onClick={() => setSelectedNote(note.text)}
-              style={{ flexGrow: 1, cursor: "pointer" }}
-            >
-              {note.text.length > 50 ? note.text.substring(0, 50) + "..." : note.text}
-            </p>
-            <button className="delete-button" onClick={() => handleDeleteNote(index)}>
-              <Trash2 size={20} color="white" />
+    <div className="note-container">
+      <h2>Notes</h2>
+
+      <div className="note-input">
+        <textarea
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
+          placeholder="Write your note here..."
+        />
+        <button onClick={submitNote}>Add Note</button>
+      </div>
+
+      <div className="note-list">
+        {noteList.map((noteItem, index) => (
+          <div key={index} className="note-item">
+            <p>{noteItem.notes}</p>
+            <small>{new Date(noteItem.timestamp).toLocaleString()}</small>
+          </div>
+        ))}
+      </div>
+      <div className="note-list">
+        {noteList.map((noteItem) => (
+          <div key={noteItem._id} className="note-item">
+            <p>{noteItem.notes}</p>
+            <small>{new Date(noteItem.timestamp).toLocaleString()}</small>
+            <button className="delete-btn" onClick={() => deleteNote(noteItem._id)}>
+              <Trash2 size={18} />
             </button>
           </div>
         ))}
       </div>
-
-      {/* Add Button */}
-      <div className="add-button-container">
-        <button className="add-button" onClick={handleAddNote}>+</button>
-      </div>
-
-      {/* Modal for Adding Note */}
-      {showModal && (
-        <div className="modal">
-          <textarea
-            value={newNote}
-            onChange={(e) => setNewNote(e.target.value)}
-            placeholder="Write your note here..."
-          ></textarea>
-          <button className="save-button" onClick={handleSaveNote}>Save</button>
-          <button className="close-button" onClick={() => setShowModal(false)}>Close</button>
-        </div>
-      )}
-
-      {/* Modal for Viewing Full Note */}
-      {selectedNote && (
-        <div className="modal">
-          <p>{selectedNote}</p>
-          <button className="close-button" onClick={() => setSelectedNote(null)}>Close</button>
-        </div>
-      )}
     </div>
   );
 };

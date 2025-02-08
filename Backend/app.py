@@ -10,7 +10,8 @@ import os
 from utils.questiongenerate import generate_answers,generate_questions
 from database.connection import user_collection
 from uuid import uuid4
-from database.connection import feedback
+from database.connection import feedback,notes_collection
+from bson import ObjectId
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -164,6 +165,60 @@ def auth_check():
         return jsonify({"user": decoded_token["sub"]}), 200
     except Exception as e:
         return jsonify({"error": "Invalid token"}), 401
+
+
+# New route for submitting feedback
+@app.route('/note', methods=['POST'])
+def submit_note():
+    data = request.json
+    user_id = data.get("user_id")
+    notes = data.get("notes")
+    # Optionally use a provided feedback_id, or generate a new one if not provided
+    note_id = data.get("need_id", str(uuid4()))
+
+    if not user_id or not notes:
+        return jsonify({"error": "Missing required fields: user_id, notes"}), 400
+
+    note_data = {
+        "user_id": user_id,
+        "note_id": note_id,
+        "notes": notes,
+        "timestamp": datetime.datetime.utcnow()
+    }
+
+    result = notes_collection.insert_one(note_data)
+
+    if result.inserted_id:
+        return jsonify({"message": "Note submitted successfully", "note_id": note_id}), 201
+    else:
+        return jsonify({"error": "An error occurred while submitting Note"}), 500
+
+# Route to fetch all notes
+@app.route('/note', methods=['GET'])
+def get_notes():
+    """Fetch all notes stored in the database."""
+    all_notes = list(notes_collection.find({}))
+    
+    # Convert ObjectId and datetime objects to strings
+    for note in all_notes:
+        note["_id"] = str(note["_id"])
+        note["timestamp"] = note["timestamp"].isoformat() if "timestamp" in note else None
+    
+    return jsonify(all_notes)
+
+
+# Route to delete a note
+@app.route('/note/<note_id>', methods=['DELETE'])
+def delete_note(note_id):
+    """Delete a note by ID."""
+    try:
+        result = notes_collection.delete_one({"_id": ObjectId(note_id)})
+        if result.deleted_count:
+            return jsonify({"message": "Note deleted successfully"}), 200
+        else:
+            return jsonify({"error": "Note not found"}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
     
 
 # New route for submitting feedback
