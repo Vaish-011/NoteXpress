@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import  ProfileCard from './components/Dashboard/ProfileCard';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
