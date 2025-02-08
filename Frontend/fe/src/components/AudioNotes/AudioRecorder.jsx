@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import "./AudioRecorder.css";
 
 const AudioRecorder = () => {
   const [recordings, setRecordings] = useState([]);

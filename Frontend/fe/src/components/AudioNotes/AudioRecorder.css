@@ -1,162 +1,124 @@
-/* Import futuristic font */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
-
-/* Audio Recorder - Glassmorphic 3D Effect */
-.audio-recorder {
-    width: 50vw;
-    max-width: 600px;
-    margin: 50px auto;
-    text-align: center;
-    background: rgba(0, 0, 30, 0.7); /* Dark Blue Transparent */
-    backdrop-filter: blur(20px);
-    padding: 30px;
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Container Styling */
+  .container {
+    background: rgba(0, 0, 30, 0.8); /* Semi-transparent dark blue */
     border-radius: 15px;
-    box-shadow: 0px 10px 25px rgba(0, 0, 255, 0.3); /* Neon Blue Glow */
-    border: 1px solid rgba(0, 0, 255, 0.4);
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0px 10px 25px rgba(0, 0, 255, 0.3); /* Glow effect */
+    text-align: center;
     animation: fadeIn 1s ease-out;
-}
+  
 
-/* Header with Neon Glow */
-h2 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 24px;
+   /* Centering within body */
+   position: relative;
+   top: 40%;
+   left: 40%;
+   transform: translate(-40%, -40%);
+ }
+  
+  /* Header */
+  h1 {
+    font-size: 2.5rem;
     text-transform: uppercase;
-    font-weight: bold;
-    background: linear-gradient(45deg, #00aaff, #00ffea);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 10px rgba(0, 140, 255, 0.8);
     margin-bottom: 20px;
-}
-
-/* Controls - Start/Stop Buttons */
-.controls {
-    margin: 20px 0;
+    color: #00ffea;
+    text-shadow: 0 0 10px rgba(0, 255, 234, 0.8);
+  }
+  
+  /* Buttons Section */
+  .buttons {
     display: flex;
     justify-content: center;
     gap: 20px;
-}
-
-/* Buttons - 3D Neon Glass Effect */
-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    font-size: 16px;
-    padding: 12px 20px;
+    margin-bottom: 30px;
+  }
+  
+  button {
+    background: linear-gradient(45deg, #00aaff, #00ffea);
     border: none;
+    border-radius: 30px;
+    color: #001a66;
+    font-size: 1rem;
+    padding: 10px 20px;
     cursor: pointer;
-    border-radius: 10px;
-    font-weight: bold;
-    background: linear-gradient(145deg, #0044ff, #001a66);
-    color: white;
-    box-shadow: 3px 3px 10px #0000ff, -3px -3px 10px #0055ff;
-    transition: 0.3s ease;
-}
-
-button:hover {
-    background: linear-gradient(145deg, #001a66, #0044ff);
-    box-shadow: 0 0 15px #00ccff;
-    transform: scale(1.05);
-}
-
-button:disabled {
-    background: #333;
-    color: gray;
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 5px 15px rgba(0, 255, 234, 0.5);
+  }
+  
+  button:disabled {
+    background: rgba(255, 255, 255, 0.5);
     cursor: not-allowed;
-}
-
-button:active {
-    transform: scale(0.95);
-}
-
-/* Start Button */
-.start-btn {
-    background: linear-gradient(145deg, #00ff66, #007a33);
-    box-shadow: 0px 0px 15px rgba(0, 255, 102, 0.8);
-}
-
-.start-btn:hover {
-    background: linear-gradient(145deg, #007a33, #00ff66);
-    box-shadow: 0px 0px 20px rgba(0, 255, 102, 1);
-}
-
-/* Stop Button */
-.stop-btn {
-    background: linear-gradient(145deg, #ff0033, #a00022);
-    box-shadow: 0px 0px 15px rgba(255, 0, 51, 0.8);
-}
-
-.stop-btn:hover {
-    background: linear-gradient(145deg, #a00022, #ff0033);
-    box-shadow: 0px 0px 20px rgba(255, 0, 51, 1);
-}
-
-/* Recordings Section */
-.recordings {
-    margin-top: 30px;
-    padding: 20px;
-    background: rgba(0, 0, 50, 0.5);
-    border-radius: 15px;
-    border: 1px solid rgba(0, 0, 255, 0.3);
-    box-shadow: inset 0 0 15px rgba(0, 140, 255, 0.5);
-}
-
-/* Individual Audio Item */
-.audio-item {
+    color: rgba(0, 0, 30, 0.7);
+  }
+  
+  /* Recordings Section */
+  .recordings {
+    margin-top: 20px;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .audio-item {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 0, 255, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 15px;
-    padding: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    background: rgba(0, 0, 50, 0.4);
-    box-shadow: 0px 3px 6px rgba(0, 0, 140, 0.5);
-    transition: 0.3s ease;
-}
-
-.audio-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0px 5px 10px rgba(0, 140, 255, 0.8);
-}
-
-/* Delete Button */
-.delete-btn {
-    background: linear-gradient(145deg, #ff5555, #a00022);
-    color: white;
-    padding: 8px 12px;
-    font-size: 14px;
-    font-weight: bold;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(255, 80, 80, 0.8);
-    transition: 0.3s ease;
-}
-
-.delete-btn:hover {
-    background: linear-gradient(145deg, #a00022, #ff5555);
-    box-shadow: 0 0 15px rgba(255, 100, 100, 1);
-    transform: scale(1.1);
-}
-
-/* Audio Element */
-audio {
-    width: 100%;
+  }
+  
+  audio {
+    width: 70%;
+    border-radius: 5px;
     outline: none;
-    filter: drop-shadow(0px 0px 10px rgba(0, 140, 255, 0.8));
-}
-
-/* Animations */
-@keyframes fadeIn {
+  }
+  
+  /* Delete Button */
+  .delete-btn {
+    background: rgba(255, 0, 0, 0.8);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .delete-btn:hover {
+    background: rgba(255, 0, 0, 1);
+    transform: scale(1.1);
+  }
+  
+  /* Fade-in Animation */
+  @keyframes fadeIn {
     from {
-        opacity: 0;
-        transform: translateY(20px);
+      opacity: 0;
+      transform: translateY(20px);
     }
     to {
-        opacity: 1;
-        transform: translateY(0);
+      opacity: 1;
+      transform: translateY(0);
     }
-}
+  }
+  
