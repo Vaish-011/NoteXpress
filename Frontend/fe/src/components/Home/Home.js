@@ -48,7 +48,7 @@ const Home = () => {
   return (
     <div className="home-container">
       <nav className="navbar">
-        <h1 className="text-2xl font-bold text-white">Learn Buddy</h1>
+        <h1 className="text-2xl font-bold text-white">⚡NoteXpress</h1>
         <div className="hamburger" onClick={() => setSidebarOpen(!sidebarOpen)}>☰</div>
       </nav>
 

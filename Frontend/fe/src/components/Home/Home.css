@@ -39,12 +39,19 @@ body {
 }
 
 .hamburger {
+    color: #00aaff; /* Set to bright blue */
     font-size: 2rem;
-    cursor: pointer !important;  /* Ensures the correct cursor */
+    cursor: pointer;
     position: absolute;
     right: 1rem;
     top: 1rem;
-    user-select: none;  /* Prevents accidental text selection */
+    user-select: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.hamburger:hover {
+    color: #187cda; 
+    transform: translateY(-3px);
 }
 
 
@@ -61,7 +68,7 @@ body {
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
     padding-top: 5rem; 
-
+    
 }
 
 .sidebar.open {
@@ -69,15 +76,75 @@ body {
 }
 
 /* Sidebar Links */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%; /* Make list take full width */
+    text-align: center;
+}
+
+/* Sidebar Links */
+/* .sidebar li {
+    padding: 15px;
+    border-radius: 8px;
+    transition: background 0.3s ease-in-out;} */
+
+
 .sidebar li {
     padding: 15px;
+    margin: 10px 20px; /* Adds spacing between items */
+    border-radius: 8px;
+    width: 80%; /* Make the items wider */
+    transition: background 0.3s ease-in-out;
+    text-align: center;
+    cursor: pointer; /* Ensure clickable area */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}
+.sidebar li:hover {
+    background: rgba(0, 140, 255, 0.3);
+}
+
+/* Make entire list item clickable */
+.sidebar a, .sidebar button {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: white;
+    border: none;
+    background: transparent;
+    cursor: pointer;
     border-radius: 8px;
     transition: background 0.3s ease-in-out;
 }
 
-.sidebar li:hover {
-    background: rgba(0, 140, 255, 0.3);
+.sidebar button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Make full width */
+    height: 50px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: white;
+    background: rgba(27, 54, 178, 0.7); /* Red background */
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s ease-in-out;
 }
+
+.sidebar button:hover {
+    background: rgba(39, 19, 100, 0.9); /* Darker red on hover */
+}
+
 
 /* Main Content */
 .main-content {
