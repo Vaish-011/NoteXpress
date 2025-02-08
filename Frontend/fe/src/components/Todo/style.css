@@ -1,0 +1,111 @@
+
+body {
+    background-color: #050a1f; 
+    
+}
+
+
+.todo-container {
+    background: #1e1e2f; 
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 800px;  
+    height: auto; 
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff; /* White text for the heading */
+}
+
+.todo-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.todo-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #444;  /* Darker border for input fields */
+    border-radius: 4px;
+    background-color: #2a2a3c; /* Darker background for input */
+    color: #f0f0f0; /* Light text in input */
+}
+
+.todo-input button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.todo-input button:hover {
+    background-color: #218838; /* Slightly darker green when hovered */
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    background: #1e1e2f;
+    padding: 12px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+.todo-item:hover {
+    transform: translateY(-5px);  /* Lifts the task slightly on hover */
+    box-shadow: 0 8px 16px rgba(1, 16, 46, 0.3); /* Larger shadow for deeper effect */
+}
+
+.todo-item input[type="text"] {
+    flex: 1;
+    background: none;
+    color: #f0f0f0;  /* Light text color */
+    border: none;
+    outline: none;
+    padding: 8px;
+}
+
+.todo-item input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.todo-item button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #ff3b30; /* Red color for delete button */
+}
+
+.todo-item button:hover {
+    color: #ff1a1a; /* Darker red for hover effect */
+}
+
+/* Completed task styling */
+.todo-item.completed {
+    background: #c6e9a7;
+    text-decoration: line-through;
+    color: #000000; /* Slightly faded text for completed tasks */
+}
+
+/* Add transition to checkbox and input focus for smoother feel */
+.todo-item input[type="checkbox"]:checked + input[type="text"] {
+    color: #000000;
+}
