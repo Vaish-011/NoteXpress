@@ -10,11 +10,31 @@
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 255, 0.4);
   }
+
+  .question-container {
+    margin-top: 10px;
+    max-height: 700px; /* Adjust height as needed */
+    overflow-y: auto;
+    padding-top: 8px;
+    padding-right: 10px; /* Prevents text cutoff due to scrollbar */
+    max-width:500px;
+}
+
+/* Optional: Style scrollbar */
+.question-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.question-container::-webkit-scrollbar-thumb {
+    background: #4c7ec5;
+    border-radius: 4px;
+}
+
   
 
   .title {
     background: linear-gradient(to right, #121257, #21185a); /* Gradient effect */
-   
+  
     padding: 10px;
     border-radius: 8px;
     font-size: 26px;

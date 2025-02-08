@@ -12,7 +12,7 @@ const QuestionPage = () => {
       {qaPairs.length === 0 ? (
         <p>No questions available. Generate some first!</p>
       ) : (
-        <div>
+        <div className="question-container" >
           {qaPairs.map((qa, index) => (
             <div key={index} className="question-box">
               <label className="question-text">
