@@ -1,100 +1,133 @@
-/* 3D Glassmorphic Feedback Container */
+/* Main Feedback Container (Glassmorphic) */
 .feedback-container {
-    width: 50vw;
-    max-width: 50%;
-    height: auto;
-    margin: 50px auto;
+    width: 80vw;         /* Adjusted width (or use fixed width e.g., 800px) */
+    margin: 250px auto 50px auto;
     padding: 30px;
     background: rgba(0, 0, 30, 0.7); /* Dark blue glass effect */
     backdrop-filter: blur(15px);
     border-radius: 15px;
     box-shadow: 0px 10px 20px rgba(0, 0, 255, 0.3); /* Blue glow */
-    text-align: center;
+    border: 1px solid rgba(0, 0, 255, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Feedback Input Section */
+.feedback-input-container {
+    background: rgba(0, 0, 30, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 255, 0.3);
     border: 1px solid rgba(0, 0, 255, 0.4);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
-/* Bold, Bigger, Neon Feedback Heading */
-.feedback-heading {
+/* Feedback Received Section */
+.feedback-received-container {
+    background: rgba(0, 0, 30, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 255, 0.3);
+    border: 1px solid rgba(0, 0, 255, 0.4);
+    max-height: 300px;   /* Limit height for scrolling */
+    overflow-y: auto;    /* Enable vertical scroll if needed */
+    text-align: left;
+}
+
+/* Center the rating stars container */
+.feedback-stars-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* Center the submit button */
+.feedback-button {
+    display: block;
+    margin: 20px auto;       /* Centers the button with auto left/right margins */
+}
+
+/* Headings for Each Section */
+.feedback-input-container h2,
+.feedback-received-container h3 {
+    text-align: center;
     font-family: 'Orbitron', sans-serif;
-    font-size: 2rem;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 900; /* Bold weight */
+    font-size: 2rem; /* Increased size */
     background: linear-gradient(45deg, #00aaff, #00ffea);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 10px rgba(0, 140, 255, 0.8);
+    text-shadow: 0 0 8px rgba(0, 140, 255, 0.8);
+    margin-bottom: 20px;
 }
 
-/* Centers all elements */
-.feedback-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-top: 15px;
-}
-
-/* Message Input with Neon Border */
+/* Styling for the feedback textarea */
 .feedback-message {
-    width: 90%;
-    height: 150px; /* Bigger textarea */
+    width: 100%;
+    height: 150px;
     padding: 15px;
-    border-radius: 10px;
     border: 2px solid #00ccff;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 50, 0.6);
+    color: white;
     font-size: 16px;
-    outline: none;
     resize: vertical;
-    background-color: rgba(0, 0, 50, 0.6); /* Dark blue transparent */
-    color: white; /* White text */
     box-shadow: inset 0 0 10px rgba(0, 0, 255, 0.4);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease;
+    text-align: center;  /* Center align the text within the textarea */
 }
 
 .feedback-message:focus {
     border-color: #0088ff;
     box-shadow: 0 0 15px #00ccff;
+    outline: none;
 }
 
-/* Rate Us Label */
+/* Optionally, center align any label text */
 .feedback-label {
-    font-size: 18px;
-    font-weight: bold;
-    color: #00ccff;
+    font-size: 1.2rem;        /* Increase font size */
     text-align: center;
-    text-shadow: 0 0 5px #00ccff;
+    display: block;
+    margin-bottom: 10px;
 }
 
-/* Stars Centered */
-.feedback-stars-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 10px;
+/* Custom Scrollbar for Feedback Received Section (Webkit Browsers) */
+.feedback-received-container::-webkit-scrollbar {
+    width: 10px;
 }
 
-/* Submit Button with 3D Effect */
-.feedback-button {
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(145deg, #0044ff, #001a66); /* Deep blue gradient */
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
+.feedback-received-container::-webkit-scrollbar-track {
+    background: #0b0f16; /* Blueish black background */
     border-radius: 10px;
-    cursor: pointer;
-    margin-top: 15px;
-    box-shadow: 3px 3px 10px #0000ff, -3px -3px 10px #0055ff;
-    transition: 0.3s ease;
 }
 
-.feedback-button:hover {
-    background: linear-gradient(145deg, #001a66, #0044ff);
-    box-shadow: 0 0 15px #00ccff;
-    transform: scale(1.05);
+.feedback-received-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #00aaff, #00ffea);
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
-.feedback-button:active {
-    transform: scale(0.95);
+/* Styling for Individual Feedback Items */
+.feedback-item {
+    background: rgba(0, 0, 50, 0.5); /* Slightly darker background */
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 255, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.feedback-item:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+}
+
+.feedback-item p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.feedback-item strong {
+    color: #00ccff;
 }

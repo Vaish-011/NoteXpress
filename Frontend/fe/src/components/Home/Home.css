@@ -81,7 +81,7 @@ body {
 
 /* Main Content */
 .main-content {
-    margin-top: 550px; /* Move below navbar */
+    margin-top: 300px; /* Move below navbar */
     margin-left: 50px; /* Adjust for sidebar */
     padding: 20px;
     
@@ -103,6 +103,7 @@ body {
     text-align: center;
     padding: 20px;
     transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin: 20px; 
 }
 
 /* Hover effect - more depth */
@@ -128,6 +129,7 @@ body {
     justify-content: center;
     font-size: 2.5rem;
     box-shadow: inset 0 4px 10px rgba(255, 255, 255, 0.1);
+    margin: 0 auto; 
 }
 
 /* Card Text */
