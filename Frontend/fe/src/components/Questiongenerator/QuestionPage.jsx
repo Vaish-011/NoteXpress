@@ -7,7 +7,7 @@ const QuestionPage = () => {
   const qaPairs = location.state?.qa_pairs || []; // Get question-answer pairs
 
   return (
-    <div className="container">
+    <div className="page-container">
       <h2 className="title">Generated Questions & Answers</h2>
       {qaPairs.length === 0 ? (
         <p>No questions available. Generate some first!</p>

@@ -1,19 +1,20 @@
-.container {
+.page-container {
     position: relative;
     top: -40px;
     margin-top:150px;
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    background: #f8f9fa;
+    background: rgba(0, 0, 30, 0.7);
+    box-shadow: 0px 10px 20px rgba(0, 0, 255, 0.3);
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 255, 0.4);
   }
   
 
   .title {
-    background: linear-gradient(to right, #1e1e93, #231773); /* Gradient effect */
-    color: white;
+    background: linear-gradient(to right, #121257, #21185a); /* Gradient effect */
+   
     padding: 10px;
     border-radius: 8px;
     font-size: 26px;
@@ -45,8 +46,8 @@
     padding: 10px;
     border: 1px solid #4c7ec5;  /* Light grey border */
     border-radius: 5px;
-    background-color: #4a268e; /* Light grey background */
-    color: #333; /* Dark text for better readability */
+    background-color: #360a88; /* Light grey background */
+    color: #b4b8dc; /* Dark text for better readability */
     font-size: 16px;
 }
 

@@ -5,20 +5,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
 }
 
-.container {
-    max-width: 600px;
-    padding: 25px;
-    background: rgba(31, 26, 44, 0.8) !important; /* Force red background */
-    backdrop-filter: blur(10px);
+.audio-container {
+   
+    position: relative;
+    top: -30px;
+    width: 90vw;
+    max-width: 50%;
+    height: 450px;
+    margin: 10px auto;
+    padding: 30px;
+    background: rgba(0, 0, 30, 0.7); /* Dark blue glass effect */
+    backdrop-filter: blur(15px);
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(192, 20, 20, 0.5);
+    box-shadow: 0px 10px 20px rgba(0, 0, 255, 0.3); /* Blue glow */
     text-align: center;
+    border: 1px solid rgba(0, 0, 255, 0.4);
 }
-
 
 
   
@@ -39,6 +45,7 @@ h1 {
 
 .upload-section input[type="file"] {
     padding: 12px;
+    
     border: 2px solid #0d4a87;
     border-radius: 8px;
     cursor: pointer;

@@ -37,7 +37,7 @@ const SpeechToText = () => {
   };
 
   return (
-    <div className="container">
+    <div className="audio-container">
       <h1>🎙 Audio File to Text</h1>
       
       {/* File Upload */}
