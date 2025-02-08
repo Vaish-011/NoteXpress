@@ -34,7 +34,7 @@ NoteXpress is an smart note-taking platform designed to make learning more effic
 
 ### 6️⃣ Feedback
 - Takes Feedback from users
-- 
+  
 ## Contributors
 - [Muskan Tomar](https://github.com/Vaish-011)
 - [Rachita Laad](https://github.com/RACHITALAAD)
