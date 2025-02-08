@@ -55,7 +55,6 @@ const Home = () => {
       <div className="main-content">
         <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
           <ul>
-            <li>Profile</li>
             <li><Link to="/feedback">Feedback</Link></li>
             <li><button onClick={handleLogout}>Log-out</button></li>
           </ul>

@@ -13,7 +13,6 @@ import AudioRecorder from './components/AudioNotes/AudioRecorder';
 import Note from './components/Note/Note';
 import { TodoProvider } from "./context/TodoContext";
 import TodoList from "./components/Todo/TodoList";
-import ProfileCard from './components/Dashboard/ProfileCard';
 
 function App() {
   return (
@@ -32,7 +31,6 @@ function App() {
           <Route path="/audio-notes" element={<AudioRecorder />} />
           <Route path='/note'element={<Note/>}></Route>
           <Route path="/todo" element={<TodoProvider><TodoList /></TodoProvider>} />
-          <Route path='/profile' element={<ProfileCard />} />
         </Routes>
       </div>
     </Router>
